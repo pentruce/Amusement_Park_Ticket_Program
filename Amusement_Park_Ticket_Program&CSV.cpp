@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdbool.h>
 
-	//±ÇÁ¾º° °¡°İA - Á¾ÇÕÀÌ¿ë±Ç  
+	//ê¶Œì¢…ë³„ ê°€ê²©A - ì¢…í•©ì´ìš©ê¶Œ  
 	const int A_BABY_PRICE = 15000,
 	A_ADULT_DAY_PRICE = 62000, A_ADULT_NIGHT_PRICE = 50000,
 	A_TEEN_DAY_PRICE = 54000, A_TEEN_NIGHT_PRICE = 43000,
@@ -10,7 +10,7 @@
 	A_OLD_DAY_PRICE = 47000, A_OLD_NIGHT_PRICE = 36000;
 	
 
-	//±ÇÁ¾º° °¡°İB - ÆÄÅ©ÀÌ¿ë±Ç  
+	//ê¶Œì¢…ë³„ ê°€ê²©B - íŒŒí¬ì´ìš©ê¶Œ  
 	const int B_BABY_PRICE = 15000,
 	B_ADULT_DAY_PRICE = 59000, B_ADULT_NIGHT_PRICE = 47000,
 	B_TEEN_DAY_PRICE = 52000, B_TEEN_NIGHT_PRICE = 41000,
@@ -18,7 +18,7 @@
 	B_OLD_DAY_PRICE = 46000, B_OLD_NIGHT_PRICE = 35000;
 
 
-	// ÁÖ¹Îµî·Ï¹øÈ£ ºĞ¼®
+	// ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ ë¶„ì„
 	const long long int FULL_DIGIT = 10000000000000,
 	FULL_DIGIT_MIN = 10000000000, 
 	SEVEN_DIGIT = 1000000;
@@ -28,24 +28,24 @@
 	BEFORE_BIRTH = 2, AFTER_BIRTH = 1;
 
 
-	// ³ªÀÌ¿¡ µû¸¥ ¹üÀ§
+	// ë‚˜ì´ì— ë”°ë¥¸ ë²”ìœ„
 	const int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19,
 	MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;
 	
 	
-	// ³ªÀÌ¿¡ µû¸¥ ±×·ì
+	// ë‚˜ì´ì— ë”°ë¥¸ ê·¸ë£¹
 	const int BABY = 1, CHILD = 2, TEEN = 3, ADULT = 4, OLD = 5;
 	
-	// ÇÒÀÎÀ²
+	// í• ì¸ìœ¨
 	const float DISABLE_DISCOUNT_RATE = 0.5, PAT_DISCOUNT_RATE = 0.5,
 	MULTICHILD_DISCOUNT_RATE = 0.3, MI_DISCOUNT_RATE = 0.49,
 	PREGNANT_DISCOUNT_RATE = 0.5;
 
-	// ÃÖ´ë ÁÖ¹®·®
+	// ìµœëŒ€ ì£¼ë¬¸ëŸ‰
 	const int MAX_COUNT = 10, MIN_COUNT = 1;
 		
 	
-	// ÇÔ¼ö Á¤ÀÇ 
+	// í•¨ìˆ˜ ì •ì˜ 
 	void errorMessagePrint();
 	
 	int inputTicketSelect();
@@ -70,12 +70,12 @@
 	int orderContinue();
 
 	
-	//¸ŞÀÎ
+	//ë©”ì¸
 	
 	int main() {
-		int totalPrice = 0; // ÁÖ¹® ÃÑ¾×
-		int position = 0; //ÁÖ¹® ³»¿ª ¹è¿­ Å½»ö¿ë
-	 	int filePosition = 0; //ÆÄÀÏ Ãâ·Â Ã¹ÁÙ ±¸ºĞ
+		int totalPrice = 0; // ì£¼ë¬¸ ì´ì•¡
+		int position = 0; //ì£¼ë¬¸ ë‚´ì—­ ë°°ì—´ íƒìƒ‰ìš©
+	 	int filePosition = 0; //íŒŒì¼ ì¶œë ¥ ì²«ì¤„ êµ¬ë¶„
 		int reportPostition = 0;
 		int orderList[100][5] = {0};
 		int isExit = 0;
@@ -85,32 +85,32 @@
 			
 			while(true)
 			{
-					long long int customerIDNumber = 0; //ÁÖ¹Î¹øÈ£
-					int ticketSelect = 0, orderCount = 0, discountSelect = 0; //±ÇÁ¾, ÁÖ¹®°¹¼ö, ¿ì´ë»çÇ×
-					int priceResult = 0, age = 0; //°¡°İ, ³ªÀÌ
-					int continueSelect = 0; // ÀÌ¾î¼­ ÁÖ¹® 
+					long long int customerIDNumber = 0; //ì£¼ë¯¼ë²ˆí˜¸
+					int ticketSelect = 0, orderCount = 0, discountSelect = 0; //ê¶Œì¢…, ì£¼ë¬¸ê°¯ìˆ˜, ìš°ëŒ€ì‚¬í•­
+					int priceResult = 0, age = 0; //ê°€ê²©, ë‚˜ì´
+					int continueSelect = 0; // ì´ì–´ì„œ ì£¼ë¬¸ 
 			
 					
-					inputData(&ticketSelect, &customerIDNumber, &orderCount, &discountSelect); //ÀÔ·ÂÇÔ¼ö È£Ãâ
-					priceResult = processIntergration(customerIDNumber, ticketSelect, discountSelect, orderCount, priceResult, &age); //¿ä±İ °è»ê 
+					inputData(&ticketSelect, &customerIDNumber, &orderCount, &discountSelect); //ì…ë ¥í•¨ìˆ˜ í˜¸ì¶œ
+					priceResult = processIntergration(customerIDNumber, ticketSelect, discountSelect, orderCount, priceResult, &age); //ìš”ê¸ˆ ê³„ì‚° 
 					
-					saveOrderList(ticketSelect, age, orderCount, priceResult, discountSelect, &position, orderList); // ÁÖ¹® ³»¿ª ÀúÀå
+					saveOrderList(ticketSelect, age, orderCount, priceResult, discountSelect, &position, orderList); // ì£¼ë¬¸ ë‚´ì—­ ì €ì¥
 					
-					totalPrice += priceResult; // ¿ä±İ ÇÕ°è °è»ê
+					totalPrice += priceResult; // ìš”ê¸ˆ í•©ê³„ ê³„ì‚°
 					
-					pricePrint(priceResult); // °¡°İ Ãâ·Â
+					pricePrint(priceResult); // ê°€ê²© ì¶œë ¥
 					
-					continueSelect = orderContinue(); // ÀÌ¾î¼­ ÁÖ¹®ÇÒÁö ÀÔ·Â
+					continueSelect = orderContinue(); // ì´ì–´ì„œ ì£¼ë¬¸í• ì§€ ì…ë ¥
 					
 					if(continueSelect == 2) 
 					{
 						break;
 					 } 
 				}
-				orderPrint(totalPrice, &position, orderList); // ÁÖ¹® ³»¿ª Ãâ·Â 
+				orderPrint(totalPrice, &position, orderList); // ì£¼ë¬¸ ë‚´ì—­ ì¶œë ¥ 
 				orderFilePrint(totalPrice, &position, orderList, &filePosition);
 				
-				printf("°è¼Ó ÁøÇà(1: »õ·Î¿î ÁÖ¹®, 2: ÇÁ·Î±×·¥ Á¾·á): ");
+				printf("ê³„ì† ì§„í–‰(1: ìƒˆë¡œìš´ ì£¼ë¬¸, 2: í”„ë¡œê·¸ë¨ ì¢…ë£Œ): ");
 				scanf("%d",&isExit);
 				position = 0;
 				totalPrice = 0;
@@ -120,11 +120,11 @@
 		 
 	} 
 	
-	//±ÇÁ¾ ÀÔ·Â
+	//ê¶Œì¢… ì…ë ¥
 	int inputTicketSelect() 
 	{  
 		int ticketSelect = 0;
-		printf("±ÇÁ¾À» ¼±ÅÃÇÏ¼¼¿ä.\n1. Á¾ÇÕÀÌ¿ë±Ç - 1DAY\n2. Á¾ÇÕÀÌ¿ë±Ç - After4\n3. ÆÄÅ©ÀÌ¿ë±Ç - 1DAY\n4. ÆÄÅ©ÀÌ¿ë±Ç - After4\n-> ");
+		printf("ê¶Œì¢…ì„ ì„ íƒí•˜ì„¸ìš”.\n1. ì¢…í•©ì´ìš©ê¶Œ - 1DAY\n2. ì¢…í•©ì´ìš©ê¶Œ - After4\n3. íŒŒí¬ì´ìš©ê¶Œ - 1DAY\n4. íŒŒí¬ì´ìš©ê¶Œ - After4\n-> ");
 		while(true)
 		{
 			scanf("%d", &ticketSelect);
@@ -141,11 +141,11 @@
 		return ticketSelect;
 	}
 	
-	//ÁÖ¹Îµî·Ï¹øÈ£ ÀÔ·Â 
+	//ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ ì…ë ¥ 
 	long long int inputCustomerIDNumber()
 	{
 		long long int customerIDNumber = 0;
-		printf("ÁÖ¹Î¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n-> ");
+		printf("ì£¼ë¯¼ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n-> ");
 		while(true)
 		{
 				scanf("%lld", &customerIDNumber);
@@ -163,12 +163,12 @@
 	}
 	
 	
-	//ÁÖ¹® °¹¼ö ÀÔ·Â
+	//ì£¼ë¬¸ ê°¯ìˆ˜ ì…ë ¥
 	int inputOrderCount() 
 	{
 		int orderCount = 0;
 		
-		printf("¸î°³¸¦ ÁÖ¹®ÇÏ½Ã°Ú½À´Ï±î? (ÃÖ´ë 10°³)\n-> ");
+		printf("ëª‡ê°œë¥¼ ì£¼ë¬¸í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (ìµœëŒ€ 10ê°œ)\n-> ");
 		while(true)
 		{
 			scanf("%d", &orderCount);
@@ -186,13 +186,13 @@
 		return orderCount;
 	}
 	
-	//¿ì´ë»çÇ× ÀÔ·Â
+	//ìš°ëŒ€ì‚¬í•­ ì…ë ¥
 	int inputDiscountSelect()
 	{
 		int discountSelect = 0;
 		
 		
-		printf("¿ì´ë»çÇ×À» ¼±ÅÃÇÏ¼¼¿ä.\n1. ¾øÀ½\n2. Àå¾ÖÀÎ\n3. ±¹°¡À¯°øÀÚ\n3. ´ÙÀÚ³à\n5.ÀÓ»êºÎ\n6. ÈŞ°¡Àåº´\n-> ");
+		printf("ìš°ëŒ€ì‚¬í•­ì„ ì„ íƒí•˜ì„¸ìš”.\n1. ì—†ìŒ\n2. ì¥ì• ì¸\n3. êµ­ê°€ìœ ê³µì\n3. ë‹¤ìë…€\n5.ì„ì‚°ë¶€\n6. íœ´ê°€ì¥ë³‘\n-> ");
 		while(true)
 		{
 			scanf("%d", &discountSelect);
@@ -209,41 +209,41 @@
 		return discountSelect;
 	}
 
-	//ÀÔ·Â ÇÔ¼ö È£Ãâ
+	//ì…ë ¥ í•¨ìˆ˜ í˜¸ì¶œ
 	void inputData(int* ticketSelect, long long int* customerIDNumber, int* orderCount, int* discountSelect)
 	{
-		//±ÇÁ¾ ÀÔ·Â 
+		//ê¶Œì¢… ì…ë ¥ 
 		*ticketSelect = inputTicketSelect();
-		//ÁÖ¹Îµî·Ï¹øÈ£ ÀÔ·Â
+		//ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ ì…ë ¥
 		*customerIDNumber = inputCustomerIDNumber();
-		//ÁÖ¹® °¹¼ö ÀÔ·Â
+		//ì£¼ë¬¸ ê°¯ìˆ˜ ì…ë ¥
 		*orderCount = inputOrderCount();
-		//¿ì´ë»çÇ× ÀÔ·Â
+		//ìš°ëŒ€ì‚¬í•­ ì…ë ¥
 		*discountSelect = inputDiscountSelect();
     } 
 
-	//¸¸³ªÀÌ °è»ê
+	//ë§Œë‚˜ì´ ê³„ì‚°
 	int calcAge(long long int customerIDNumber)
 	{
-		long int calcIDNumber = 0; //»ı³â¿ùÀÏ °è»ê
-		int customerYear = 0, customerMonth = 0, customerDay = 0; //±¸¸ÅÀÚ »ı³â¿ùÀÏ
-		int todayYear = 0, todayMonth = 0, todayDay = 0; //¿À´Ã ³¯Â¥
-		int type = 0; //±¸¸ÅÀÚ ¼ºº° ¹× 2000³â»ı ±¸ºĞ
+		long int calcIDNumber = 0; //ìƒë…„ì›”ì¼ ê³„ì‚°
+		int customerYear = 0, customerMonth = 0, customerDay = 0; //êµ¬ë§¤ì ìƒë…„ì›”ì¼
+		int todayYear = 0, todayMonth = 0, todayDay = 0; //ì˜¤ëŠ˜ ë‚ ì§œ
+		int type = 0; //êµ¬ë§¤ì ì„±ë³„ ë° 2000ë…„ìƒ êµ¬ë¶„
 		int koreanAge = 0, age = 0;
 		
 		
-		/* ÁÖ¹Îµî·Ï¹øÈ£·Î »ı³â¿ùÀÏ ÃßÃâ */
-		customerIDNumber += FULL_DIGIT; 					// ¾ÕÀÚ¸® º¸Á¸À» À§ÇØ ÇØ´ç°ªÀ» ´õÇØÁÜ
+		/* ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ë¡œ ìƒë…„ì›”ì¼ ì¶”ì¶œ */
+		customerIDNumber += FULL_DIGIT; 					// ì•ìë¦¬ ë³´ì¡´ì„ ìœ„í•´ í•´ë‹¹ê°’ì„ ë”í•´ì¤Œ
 		calcIDNumber = customerIDNumber / SEVEN_DIGIT;
-		type = calcIDNumber % 10;							// µŞÀÚ¸®ÀÇ Ã¹ ¹øÈ£ 
+		type = calcIDNumber % 10;							// ë’·ìë¦¬ì˜ ì²« ë²ˆí˜¸ 
 		calcIDNumber  /= ONE_DIGIT;  
-		customerDay = calcIDNumber % TWO_DIGIT; 			// ÀÏ 
+		customerDay = calcIDNumber % TWO_DIGIT; 			// ì¼ 
 		calcIDNumber /= TWO_DIGIT; 
-		customerMonth = calcIDNumber % TWO_DIGIT; 			// ¿ù 
+		customerMonth = calcIDNumber % TWO_DIGIT; 			// ì›” 
 		calcIDNumber /= TWO_DIGIT;
-		customerYear = calcIDNumber % TWO_DIGIT;			// »ı³â
+		customerYear = calcIDNumber % TWO_DIGIT;			// ìƒë…„
 		
-		if((type == MALE_NEW) || (type == FEMALE_NEW))      // 2000³â ÀÌÈÄ ÅÂ»ıÀÎ °æ¿ì 
+		if((type == MALE_NEW) || (type == FEMALE_NEW))      // 2000ë…„ ì´í›„ íƒœìƒì¸ ê²½ìš° 
 		{
 			customerYear += NEW_GENERATION; 
 		}
@@ -252,22 +252,22 @@
 			customerYear += OLD_GENERATION;
 		}
 		
-		/* ¿À´Ã ³¯Â¥¸¦ ±¸ÇÏ±â */
+		/* ì˜¤ëŠ˜ ë‚ ì§œë¥¼ êµ¬í•˜ê¸° */
 		time_t current;
 		time(&current);
 		struct tm* structTime;
 		structTime = localtime(&current);
 		
-		/* ÇöÀç ÀÏ */
+		/* í˜„ì¬ ì¼ */
 		todayYear = structTime->tm_year + OLD_GENERATION;
 		todayMonth = structTime->tm_mon + 1;
 		todayDay = structTime->tm_mday;
 		
 	
-		koreanAge = todayYear - customerYear +1; // ÇÑ±¹½Ä ³ªÀÌ 
+		koreanAge = todayYear - customerYear +1; // í•œêµ­ì‹ ë‚˜ì´ 
 		
 		
-		/* ¸¸³ªÀÌ °è»ê */
+		/* ë§Œë‚˜ì´ ê³„ì‚° */
 		if((customerMonth < todayMonth) || ((customerMonth == todayMonth) && (customerDay <= todayDay))) 
 		{
 			age = koreanAge - AFTER_BIRTH;
@@ -280,7 +280,7 @@
 	}
 	
 	
-	//¿¬·É´ëº° ºĞ·ù
+	//ì—°ë ¹ëŒ€ë³„ ë¶„ë¥˜
 	int calcAgeGroup(int age)
 	{
 		if((age < MIN_CHILD))
@@ -306,7 +306,7 @@
 		
 	}
 	
-	//ÁÖ¾ß±Ç°ú ³ªÀÌ¿¡ µû¸¥ ±İ¾× °è»ê
+	//ì£¼ì•¼ê¶Œê³¼ ë‚˜ì´ì— ë”°ë¥¸ ê¸ˆì•¡ ê³„ì‚°
 	int calcPriceProcess(int age, int ticketSelect)
 	{
 		int calcPrice = 0;
@@ -404,28 +404,28 @@
 	
 	}
 		
-	//¿ì´ë»çÇ×¿¡ µû¸¥ ÇÒÀÎ °è»ê
+	//ìš°ëŒ€ì‚¬í•­ì— ë”°ë¥¸ í• ì¸ ê³„ì‚°
 	int calcDiscount(int calcPrice, int discountSelect)
 	{
 		switch(discountSelect)
 		{
-		case 2 : // Àå¾ÖÀÎ
+		case 2 : // ì¥ì• ì¸
 				calcPrice *= DISABLE_DISCOUNT_RATE;
 				break;
 				 
-		case 3 : //±¹°¡À¯°øÀÚ
+		case 3 : //êµ­ê°€ìœ ê³µì
 				calcPrice *= PAT_DISCOUNT_RATE;
 				break;	
 				
-		case 4 : //´ÙÀÚ³à 
+		case 4 : //ë‹¤ìë…€ 
 				calcPrice *= MULTICHILD_DISCOUNT_RATE;
 				break;
 		
-		case 5 : //ÀÓ»êºÎ 
+		case 5 : //ì„ì‚°ë¶€ 
 				calcPrice *= PREGNANT_DISCOUNT_RATE;
 				break;
 					
-		case 6 : //ÈŞ°¡Àåº´ 
+		case 6 : //íœ´ê°€ì¥ë³‘ 
 				calcPrice *= MI_DISCOUNT_RATE;
 				break;
 				
@@ -436,33 +436,33 @@
 		return calcPrice;
 	}	
 
-	//ÁÖ¹® °¹¼ö¿¡ µû¸¥ ±İ¾× °è»ê
+	//ì£¼ë¬¸ ê°¯ìˆ˜ì— ë”°ë¥¸ ê¸ˆì•¡ ê³„ì‚°
 	int calcPriceResult(int calcPrice, int orderCount) 
 	{
 		return calcPrice * orderCount;
 	}
 	
-	//°è»ê ÇÔ¼ö È£Ãâ
+	//ê³„ì‚° í•¨ìˆ˜ í˜¸ì¶œ
 	int processIntergration(long long int customerIDNumber, int ticketSelect, int discountSelect, int orderCount, int priceResult, int *age)
 	{
 		int calcPrice = 0;
 		
-		//¸¸ ³ªÀÌ °è»ê 
+		//ë§Œ ë‚˜ì´ ê³„ì‚° 
 		*age = calcAge(customerIDNumber);
 		
-		//ÁÖ¾ß±Ç°ú ³ªÀÌ¿¡ µû¸¥ ±İ¾× °è»ê
+		//ì£¼ì•¼ê¶Œê³¼ ë‚˜ì´ì— ë”°ë¥¸ ê¸ˆì•¡ ê³„ì‚°
 		calcPrice  = calcPriceProcess(*age, ticketSelect);
 		
-		//¿ì´ë»çÇ×¿¡ µû¸¥ ÇÒÀÎ °è»ê 
+		//ìš°ëŒ€ì‚¬í•­ì— ë”°ë¥¸ í• ì¸ ê³„ì‚° 
 		calcPrice = calcDiscount(calcPrice, discountSelect);
 		
-		//ÁÖ¹® °¹¼ö¿¡ µû¸¥ ÃÖÁ¾ ±İ¾× °è»ê
+		//ì£¼ë¬¸ ê°¯ìˆ˜ì— ë”°ë¥¸ ìµœì¢… ê¸ˆì•¡ ê³„ì‚°
 		priceResult = calcPriceResult(calcPrice, orderCount);
 		
-		return priceResult; //ÃÖÁ¾ ¿ä±İ ¸®ÅÏ 
+		return priceResult; //ìµœì¢… ìš”ê¸ˆ ë¦¬í„´ 
 	} 
 	
-	//ÁÖ¹® ³»¿ª ÀúÀå
+	//ì£¼ë¬¸ ë‚´ì—­ ì €ì¥
 	void saveOrderList(int ticketSelect, int age, int orderCount, int priceResult, int discountSelect, int *position, int(*orderList)[5]) 
 	{
 		
@@ -475,17 +475,17 @@
 		
 	}
 	
-	//Æ¼ÄÏ °¡°İ Ãâ·Â
+	//í‹°ì¼“ ê°€ê²© ì¶œë ¥
 	void pricePrint(int priceResult)
 	{
-		printf("°¡°İÀº %d ¿ø ÀÔ´Ï´Ù. \n", priceResult);
+		printf("ê°€ê²©ì€ %d ì› ì…ë‹ˆë‹¤. \n", priceResult);
 		printf("THANK YOU! :)\n\n");
 	}
 	 
-	//ÁÖ¹® ³»¿ª Ãâ·Â
+	//ì£¼ë¬¸ ë‚´ì—­ ì¶œë ¥
 	void orderPrint(int totalPrice, int* position, int(*orderList)[5]) 
 	{
-		printf("Æ¼ÄÏ ¹ß±ÇÀ» Á¾·áÇÕ´Ï´Ù. °¨»çÇÕ´Ï´Ù! \n");
+		printf("í‹°ì¼“ ë°œê¶Œì„ ì¢…ë£Œí•©ë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤! \n");
 		printf("\n");
 		printf("================================ SH'S -- WORLD ================================\n");
 				
@@ -493,20 +493,20 @@
 		{
 			switch(orderList[index][0])
 			{
-				case 1 : //Á¾ÇÕ - 1DAY
-						printf("Á¾ÇÕ - 1DAY");
+				case 1 : //ì¢…í•© - 1DAY
+						printf("ì¢…í•© - 1DAY");
 						break;
 
-				case 2 : //Á¾ÇÕ - After4
-						printf("Á¾ÇÕ - After4");
+				case 2 : //ì¢…í•© - After4
+						printf("ì¢…í•© - After4");
 						break;				 
 
-				case 3 : //Á¾ÇÕ - 1DAY
-						printf("ÆÄÅ© - 1DAY");
+				case 3 : //ì¢…í•© - 1DAY
+						printf("íŒŒí¬ - 1DAY");
 						break;
 
-				case 4 : //Á¾ÇÕ - After4
-						printf("ÆÄÅ© - After4");
+				case 4 : //ì¢…í•© - After4
+						printf("íŒŒí¬ - After4");
 						break;
 
 				default:
@@ -515,52 +515,52 @@
 			
 			if(calcAgeGroup(orderList[index][1]) == BABY)
 			{
-				printf("À¯¾Æ	");
+				printf("ìœ ì•„	");
 			}
 			else if(calcAgeGroup(orderList[index][1]) == CHILD)
 			{
-				printf("¾î¸°ÀÌ	");
+				printf("ì–´ë¦°ì´	");
 			}
 			else if(calcAgeGroup(orderList[index][1]) == TEEN)
 			{
-				printf("Ã»¼Ò³â	");
+				printf("ì²­ì†Œë…„	");
 			}
 			else if(calcAgeGroup(orderList[index][1]) == ADULT)
 			{
-				printf("¾î¸¥	");
+				printf("ì–´ë¥¸	");
 			}
  			else
  			{
- 				printf("¾î¸£½Å	");
+ 				printf("ì–´ë¥´ì‹ 	");
 			}
 
 			printf("X %3d", orderList[index][2]);
-			printf("%8d¿ø	", orderList[index][3]);
+			printf("%8dì›	", orderList[index][3]);
 			
 			switch(orderList[index][4])
 			{
-			case 1: //¾øÀ½
-					printf("*¿ì´ëÀû¿ë ¾øÀ½\n");
+			case 1: //ì—†ìŒ
+					printf("*ìš°ëŒ€ì ìš© ì—†ìŒ\n");
 					break; 
 						
-			case 2: //Àå¾ÖÀÎ 
-					printf("*Àå¾ÖÀÎ ¿ì´ëÀû¿ë\n");
+			case 2: //ì¥ì• ì¸ 
+					printf("*ì¥ì• ì¸ ìš°ëŒ€ì ìš©\n");
 					break; 						
 												
-			case 3: //±¹°¡À¯°øÀÚ 
-					printf("*±¹°¡À¯°øÀÚ ¿ì´ëÀû¿ë\n");
+			case 3: //êµ­ê°€ìœ ê³µì 
+					printf("*êµ­ê°€ìœ ê³µì ìš°ëŒ€ì ìš©\n");
 					break; 						
 												
-			case 4: //´ÙÀÚ³à 
-					printf("*´ÙÀÚ³à ¿ì´ëÀû¿ë\n");
+			case 4: //ë‹¤ìë…€ 
+					printf("*ë‹¤ìë…€ ìš°ëŒ€ì ìš©\n");
 					break;						
 						
-			case 5: //ÀÓ»êºÎ 
-					printf("*ÀÓ»êºÎ ¿ì´ëÀû¿ë\n");
+			case 5: //ì„ì‚°ë¶€ 
+					printf("*ì„ì‚°ë¶€ ìš°ëŒ€ì ìš©\n");
 					break; 						
 						
-			case 6: //ÈŞ°¡Àåº´ 
-					printf("*ÈŞ°¡Àåº´ ¿ì´ëÀû¿ë\n");
+			case 6: //íœ´ê°€ì¥ë³‘ 
+					printf("*íœ´ê°€ì¥ë³‘ ìš°ëŒ€ì ìš©\n");
 					break; 						
 						
 			default:
@@ -569,20 +569,20 @@
 			} 
 		}
 		printf("\n");
-		printf("ÀÔÀå·á ÃÑ¾×Àº %d¿ø ÀÔ´Ï´Ù.\n", totalPrice);
+		printf("ì…ì¥ë£Œ ì´ì•¡ì€ %dì› ì…ë‹ˆë‹¤.\n", totalPrice);
 		printf("====================================================================================");
 	}
 	
 	
 	
-	//ÁÖ¹® ³»¿ª ÆÄÀÏ·Î Ãâ·Â
+	//ì£¼ë¬¸ ë‚´ì—­ íŒŒì¼ë¡œ ì¶œë ¥
 	void orderFilePrint(int totalPrice, int* position, int(*orderList)[5], int* filePosition)
 	{
-		FILE *fp = fopen("FLORENTINA_WORLD.csv", "a+");
+		FILE *fp = fopen("SH'S_WORLD.csv", "a+");
 		char temp ;
 		
 		
-		/* ¿À´Ã ³¯Â¥ ±¸ÇÏ±â */
+		/* ì˜¤ëŠ˜ ë‚ ì§œ êµ¬í•˜ê¸° */
 		time_t timer;
 		struct tm* t;
 		timer = time(NULL);
@@ -590,11 +590,11 @@
 		
 		for(int index = 0; index < *position; index++)
 		{
-			if(*filePosition == 0) //Ã¹ ÁÙÀÏ °æ¿ì Ãâ·Â 
+			if(*filePosition == 0) //ì²« ì¤„ì¼ ê²½ìš° ì¶œë ¥ 
 			{
-				if(fscanf(fp, "%c", &temp) == -1) //ÆÄÀÏ¿¡ ¹®ÀÚ°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é Ãâ·Â
+				if(fscanf(fp, "%c", &temp) == -1) //íŒŒì¼ì— ë¬¸ìê°€ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ ì¶œë ¥
 				{
-					fprintf(fp, "³¯Â¥,	±ÇÁ¾,	¿¬·É±¸ºĞ,	¼ö·®,	°¡°İ,	¿ì´ë»çÇ×\n"); 
+					fprintf(fp, "ë‚ ì§œ,	ê¶Œì¢…,	ì—°ë ¹êµ¬ë¶„,	ìˆ˜ëŸ‰,	ê°€ê²©,	ìš°ëŒ€ì‚¬í•­\n"); 
 				 } 
 			}
 			(*filePosition)++;
@@ -603,20 +603,20 @@
 			
 			switch(orderList[index][0])
 			{
-			case 1 : //Á¾ÇÕ - 1DAY
-					printf("\nÁ¾ÇÕ - 1DAY\n");
+			case 1 : //ì¢…í•© - 1DAY
+					printf("\nì¢…í•© - 1DAY\n");
 					break;
 
-			case 2 : //Á¾ÇÕ - After4
-					printf("\nÁ¾ÇÕ - After4\n");
+			case 2 : //ì¢…í•© - After4
+					printf("\nì¢…í•© - After4\n");
 					break;				 
 
-			case 3 : //Á¾ÇÕ - 1DAY
-					printf("\nÆÄÅ© - 1DAY\n");
+			case 3 : //ì¢…í•© - 1DAY
+					printf("\níŒŒí¬ - 1DAY\n");
 					break;
 
-			case 4 : //Á¾ÇÕ - After4
-					printf("\nÆÄÅ© - After4\n");
+			case 4 : //ì¢…í•© - After4
+					printf("\níŒŒí¬ - After4\n");
 					break;
 
 			default:
@@ -625,23 +625,23 @@
 			
 			if(calcAgeGroup(orderList[index][1]) == BABY) 
 			{
-				fprintf(fp, "À¯¾Æ ,");
+				fprintf(fp, "ìœ ì•„ ,");
 			}
 			else if(calcAgeGroup(orderList[index][1]) == CHILD) 
 			{
-				fprintf(fp, "¾î¸°ÀÌ ,");
+				fprintf(fp, "ì–´ë¦°ì´ ,");
 			} 
 			else if(calcAgeGroup(orderList[index][1]) == TEEN) 
 			{
-				fprintf(fp, "Ã»¼Ò³â ,");
+				fprintf(fp, "ì²­ì†Œë…„ ,");
 			}	
 			else if(calcAgeGroup(orderList[index][1]) == ADULT) 
 			{
-				fprintf(fp, "¾î¸¥ ,");
+				fprintf(fp, "ì–´ë¥¸ ,");
 			}	
 			else
 			{
-				fprintf(fp, "³ëÀÎ ,");
+				fprintf(fp, "ë…¸ì¸ ,");
 			}
 			
 			fprintf(fp, "%d,", orderList[index][2]);
@@ -649,28 +649,28 @@
 			
 			switch(orderList[index][4])
 			{
-			case 1: //¾øÀ½
-					printf("*¿ì´ëÀû¿ë ¾øÀ½\n\n");
+			case 1: //ì—†ìŒ
+					printf("*ìš°ëŒ€ì ìš© ì—†ìŒ\n\n");
 					break; 
 						
-			case 2: //Àå¾ÖÀÎ 
-					printf("*Àå¾ÖÀÎ ¿ì´ëÀû¿ë\n\n");
+			case 2: //ì¥ì• ì¸ 
+					printf("*ì¥ì• ì¸ ìš°ëŒ€ì ìš©\n\n");
 					break; 						
 												
-			case 3: //±¹°¡À¯°øÀÚ 
-					printf("*±¹°¡À¯°øÀÚ ¿ì´ëÀû¿ë\n\n");
+			case 3: //êµ­ê°€ìœ ê³µì 
+					printf("*êµ­ê°€ìœ ê³µì ìš°ëŒ€ì ìš©\n\n");
 					break; 						
 												
-			case 4: //´ÙÀÚ³à 
-					printf("*´ÙÀÚ³à ¿ì´ëÀû¿ë\n\n");
+			case 4: //ë‹¤ìë…€ 
+					printf("*ë‹¤ìë…€ ìš°ëŒ€ì ìš©\n\n");
 					break;						
 						
-			case 5: //ÀÓ»êºÎ 
-					printf("*ÀÓ»êºÎ ¿ì´ëÀû¿ë\n\n");
+			case 5: //ì„ì‚°ë¶€ 
+					printf("*ì„ì‚°ë¶€ ìš°ëŒ€ì ìš©\n\n");
 					break; 						
 						
-			case 6: //ÈŞ°¡Àåº´ 
-					printf("*ÈŞ°¡Àåº´ ¿ì´ëÀû¿ë\n\n");
+			case 6: //íœ´ê°€ì¥ë³‘ 
+					printf("*íœ´ê°€ì¥ë³‘ ìš°ëŒ€ì ìš©\n\n");
 					break; 						
 						
 			default:
@@ -680,14 +680,14 @@
 		 fclose(fp);
 	}
 	
-	//ÀÌ¾î¼­ ÁÖ¹® or ÁÖ¹®³»¿ª Ãâ·Â ÈÄ Á¾·á
+	//ì´ì–´ì„œ ì£¼ë¬¸ or ì£¼ë¬¸ë‚´ì—­ ì¶œë ¥ í›„ ì¢…ë£Œ
 	int orderContinue()
 	{
 		int continueSelect = 0;
 		
-		printf("°è¼Ó ¹ß±ÇÇÏ½Ã°Ú½À´Ï±î?\n");
-		printf("1. Æ¼ÄÏ ¹ß±Ç\n");
-		printf("2. Á¾·á\n");
+		printf("ê³„ì† ë°œê¶Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n");
+		printf("1. í‹°ì¼“ ë°œê¶Œ\n");
+		printf("2. ì¢…ë£Œ\n");
 		while(true)
 		{
 			scanf("%d", &continueSelect);
@@ -706,9 +706,9 @@
 	}
 	
 	
-	//¿¡·¯¸Ş½ÃÁö Ãâ·Â
+	//ì—ëŸ¬ë©”ì‹œì§€ ì¶œë ¥
 	void errorMessagePrint()
 	{
-	  	printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.\n");	
+	  	printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.\n");	
 	} 
 
